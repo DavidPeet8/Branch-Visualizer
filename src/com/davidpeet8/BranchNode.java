@@ -47,6 +47,14 @@ public class BranchNode implements Serializable {
             insertBranchRec(branchName, parentBranch);
         }
 
+        for (BranchNode node : orphans) {
+            if (node.getName().equals(parentBranch)) {
+                node.addChild(branchName);
+            } else {
+                node.insertBranchRec(branchName, parentBranch);
+            }
+        }
+
     }
 
     private void insertBranchRec(final String branchName, final String parentBranch) {
