@@ -1,0 +1,27 @@
+package com.davidpeet8;
+
+import java.io.PrintStream;
+
+public final class TerminalColors {
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLACK = "\u001B[30m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_CYAN = "\u001B[36m";
+    public static final String ANSI_WHITE = "\u001B[37m";
+
+    public static void print(final String message) {
+        print(ANSI_WHITE, System.out, message);
+    }
+
+    public static void print(final String color, PrintStream out, final String message) {
+        print(color, out, message, true);
+    }
+
+    public static void print(final String color, PrintStream out, final String message, final boolean newline) {
+        out.print(color + message + ANSI_RESET + (newline ? "\n" : ""));
+    }
+}
